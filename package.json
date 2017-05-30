@@ -4,7 +4,8 @@
   "description": "Um forum feito em mean stack",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "forum",
@@ -19,5 +20,14 @@
     "express": "^4.15.3",
     "express-validator": "^3.2.0",
     "mongoose": "^4.10.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eldemonstro/forumnode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eldemonstro/forumnode/issues"
+  },
+  "homepage": "https://github.com/eldemonstro/forumnode#readme"
 }
