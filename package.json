@@ -1,0 +1,23 @@
+{
+  "name": "nodeforum",
+  "version": "0.1.0",
+  "description": "Um forum feito em mean stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "forum",
+    "node",
+    "mean",
+    "angular",
+    "project"
+  ],
+  "author": "Fabricio Bezerra",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-validator": "^3.2.0",
+    "mongoose": "^4.10.4"
+  }
+}
