@@ -13,14 +13,20 @@ var PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  thread: {
+  threadId: {
     type: Number,
     required: true
   },
   time: {
     type: Date,
     default: Date.now
-  }
+  },
+  postId: {
+    type: Number,
+    required: true
+  },
+  leadPost: Boolean,
+  deleted: Boolean
 });
 
 mongoose.model('Post', PostSchema);

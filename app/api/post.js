@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 var api = {};
 
 var model = mongoose.model('Post');
+var info = mongoose.model('Info');
 
 api.newPost = (req, res) => {
+  console.time('newpost');
   let body = req.body;
-
-  if (!req.params.threadId) {
-    console.log(chalk.red("tentativa de postagem invalida"));
-  }
 
   // Check if everything is ok
   req.assert('title', "Titulo é obrigatório").notEmpty();
@@ -27,25 +25,45 @@ api.newPost = (req, res) => {
     return;
   }
 
-  // Criar o objeto
-  let post = {
-    title: body.title,
-    author: body.author,
-    body: body.body,
-    thread: req.params.threadId
-  };
+  info.findOne({
+      info: "counter"
+    })
+    .then((info) => {
+      let postId = info.postNumber++;
 
-  model.create(post)
-    .then((post) => {
-      res.json(post);
-    }, (error) => {
-      console.error(error);
-      res.status(500).json(error);
+      let post = {
+        title: body.title,
+        author: body.author,
+        body: body.body,
+        threadId: req.params.threadId,
+        postId: postId
+      };
+
+
+      info.save(function(err, info) {
+        if (err) {
+          console.error(err);
+          res.status(500).json(error);
+          return;
+        };
+      });
+
+      model.create(post)
+        .then((post) => {
+          res.json(post);
+        }, (error) => {
+          console.error(error);
+          res.status(500).json(error);
+          return;
+        });
+    }, (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json(err);
+        return;
+      }
     });
-
-  console.log(post);
-
-  res.json(body);
+  console.timeEnd('newpost');
 };
 
 module.exports = api;
