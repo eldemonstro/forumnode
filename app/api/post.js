@@ -20,7 +20,7 @@ api.newPost = (req, res) => {
   let errs = req.validationErrors();
 
   if (errs) {
-    console.log(chalk.red("Erros de validação encontrados"));
+    console.error(err);
     res.status(400).send(errs);
     return;
   }
@@ -29,6 +29,14 @@ api.newPost = (req, res) => {
       info: "counter"
     })
     .then((info) => {
+      if (req.params.threadId > info.threadNumber ||
+        req.params.threadId < 1) {
+        res.status(400).send({
+          'error': 'Post number out of range'
+        });
+        return;
+      }
+
       let postId = info.postNumber++;
 
       let post = {
@@ -65,5 +73,9 @@ api.newPost = (req, res) => {
     });
   console.timeEnd('newpost');
 };
+
+api.newThread = (req, res) => {
+
+}
 
 module.exports = api;
