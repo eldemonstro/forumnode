@@ -1,6 +1,6 @@
 {
   "name": "nodeforum",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Um forum feito em mean stack",
   "main": "server.js",
   "scripts": {
