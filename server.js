@@ -1,6 +1,5 @@
-const path = require('path');
 const http = require('http');
-const app = require(path.join(__dirname, 'config/express'));
+const app = require('./config/express');
 require('./config/database')('localhost/nodeforum');
 chalk = require('chalk');
 

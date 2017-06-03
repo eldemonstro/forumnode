@@ -141,7 +141,7 @@ api.getThread = (req, res) => {
     .then((posts) => {
       if (posts.length == 0) {
         console.log('aqui');
-        res.redirect('/');
+        res.redirect('/post/thread/notfound');
         return;
       }
       console.log(posts.length);
