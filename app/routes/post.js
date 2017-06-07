@@ -6,6 +6,4 @@ module.exports = (app) => {
     .post(api.newThread);
   app.route('/post/thread/:threadId')
     .get(api.getThread);
-  app.route('/post/thread/notFound')
-    .get(api.notFound);
 };

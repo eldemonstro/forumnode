@@ -95,8 +95,9 @@ api.newThread = (req, res) => {
       info: "counter"
     })
     .then((info) => {
+      console.log(info);
       let postId = info.postNumber++;
-      let threadId = info.threadId++;
+      let threadId = info.threadNumber++;
 
       let post = {
         title: body.title,
@@ -141,7 +142,7 @@ api.getThread = (req, res) => {
     .then((posts) => {
       if (posts.length == 0) {
         console.log('aqui');
-        res.redirect('/post/thread/notfound');
+        res.redirect('/');
         return;
       }
       console.log(posts.length);
